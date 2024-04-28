@@ -4,6 +4,26 @@
 
 <!-- https://github.com/sklinkert/go-ddd/blob/master/internal/application/interfaces/product_service.go -->
 
+application: 
+    - use cases interactions with repositories and external services (all injected). Dependency with domain
+    
+domain: 
+    - entities that interact
+
+infrastructure: 
+    - implementation of repositories
+    - database entities
+    - gateways or mappers between domain and database entities
+
+core: 
+    interfaces
+        - usecases
+        - repository
+        - service
+
+flow:
+cmd -> build dependencies (external services, repositories, usecases, api) -> application -> domain 
+
 ### Fútbol
 Hay ciertos términos que son importantes tener en cuenta, algunos pueden ser almacenados y otros calculados
 
