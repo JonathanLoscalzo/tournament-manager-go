@@ -5,15 +5,17 @@ package domain
 // | QUALIFICATION_ROUND_3 | PLAYOFF_ROUND_1 | PLAYOFF_ROUND_2 | PLAYOFFS | REGULAR_SEASON | CLAUSURA | APERTURA
 // | CHAMPIONSHIP | RELEGATION | RELEGATION_ROUND
 // https://builtin.com/software-engineering-perspectives/golang-enum
-type Stage int
+// type Stage string
 
 // CANCELLED | POSTPONED | FINISH | INPROGRESS | SUSPENDED ... [SCHEDULED | LIVE | IN_PLAY | PAUSED | FINISHED | POSTPONED | SUSPENDED | CANCELLED]
-type MatchStatus int
+type MatchStatus string
 
 type Match struct {
 	Competition Competition
 	Season      Season
-	Stage       Stage
+	Stage       string
+	StageOrder  int
+	Number      int
 	// Venue       string // podría ser un struct
 
 	HomeTeam MatchTeam
@@ -59,19 +61,13 @@ type ScoreGoals struct {
 	Away int
 }
 
+type MatchEventer interface {
+	GetMinute() int
+}
+
 type MatchStats struct {
 	// una cosa es dominio y otra modelo
-	// Events []interfaces.IMatchEvent
-
-	// // MAIN EVENTS
-	// Goals         []Goal
-	// Bookings      []Booking // amonestaciones
-	// Substitutions []Substitution
-
-	// // OTHER STATS
-	// Penalties []Penalty
-	// Fouls     []Foul
-	// ... Shots, Offsides, Corners, Passes,
+	Events []MatchEventer
 }
 
 type MatchEvent struct {

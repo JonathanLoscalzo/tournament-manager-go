@@ -1,6 +1,6 @@
 package interfaces
 
-type IRepository[T any] interface {
+type Repository[T any] interface {
 	Create(dto T) (T, error)
 	Get(dto T) (T, error)
 	Delete(id string) error

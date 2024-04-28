@@ -2,6 +2,7 @@ package domain
 
 import (
 	. "competition-manager/domain"
+	"fmt"
 )
 
 type Goal struct {
@@ -45,12 +46,15 @@ type Penalty struct {
 	Scored bool
 }
 
-// func prueba() {
+func prueba() {
+	var events = []MatchEventer{
+		&Goal{}, &Penalty{},
+	}
 
-// 	var a interfaces.IMatchEvent = &Goal{}
-// 	var v = MatchStats{
-// 		Events: []interfaces.IMatchEvent{
-// 			&Goal{}, &Penalty{},
-// 		},
-// 	}
-// }
+	// var a interfaces.IMatchEvent = &Goal{}
+	var v = MatchStats{
+		Events: events,
+	}
+
+	fmt.Println(v)
+}
